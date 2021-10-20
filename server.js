@@ -17,7 +17,8 @@ const cors = require('cors');
 //     "preflightContinue": false,
 //     "optionsSuccessStatus": 204
 //   }
-
+app.use(express.urlencoded());
+app.use(express.json());
 app.use(cors())
 app.all('/*', function (req, res, next) {
   // CORS headers
@@ -38,7 +39,7 @@ app.use(express.static('public'));
 const connectDB = require('./config/db');
 connectDB();
 
-app.use(express.json());
+
 
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
